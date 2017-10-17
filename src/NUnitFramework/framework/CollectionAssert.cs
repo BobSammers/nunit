@@ -132,6 +132,7 @@ namespace NUnit.Framework
         {
             Assert.That(collection, Is.Unique, message, args);
         }
+
         #endregion
 
         #region AreEqual

@@ -126,7 +126,16 @@ namespace NUnit.Framework.Assertions
                 () => CollectionAssert.AllItemsAreUnique(new SimpleObjectCollection("x", null, "y", null, "z")));
         }
 
-        #endregion
+#if !NET_2_0
+        // Using very short max time so it always fails and displays timing
+        [Test, MaxTime(10), Explicit("Performance test")]
+        public void PerformanceTest()
+        {
+            CollectionAssert.AllItemsAreUnique(Enumerable.Range(0, 10000));
+        }
+#endif
+
+#endregion
 
         #region AreEqual
 
